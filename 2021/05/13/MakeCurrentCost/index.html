@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="WaveWarp效果实现, TobeYoung">
+    <meta name="keywords" content="MakeCurrent发生了什么？, TobeYoung">
     <meta name="description" content="Stay hungry, stay foolish.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>WaveWarp效果实现 | TobeYoung</title>
+    <title>MakeCurrent发生了什么？ | TobeYoung</title>
     <link rel="icon" type="image/jpeg" href="/medias/logo.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">WaveWarp效果实现</h1>
+                    <h1 class="description center-align post-title">MakeCurrent发生了什么？</h1>
                 </div>
             </div>
         </div>
@@ -431,12 +431,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%90%8E%E5%A4%84%E7%90%86%E7%89%B9%E6%95%88/">
-                                <span class="chip bg-color">后处理特效</span>
+                            <a href="/tags/OpenGL/">
+                                <span class="chip bg-color">OpenGL</span>
                             </a>
                         
-                            <a href="/tags/AE/">
-                                <span class="chip bg-color">AE</span>
+                            <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F/">
+                                <span class="chip bg-color">图形图像</span>
                             </a>
                         
                     </div>
@@ -451,7 +451,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-06
+                    2021-05-13
                 </div>
                 
 
@@ -472,83 +472,24 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="图像特效shader-波形变形"><a href="#图像特效shader-波形变形" class="headerlink" title="图像特效shader -波形变形"></a>图像特效shader -波形变形</h1><h2 id="0x00-概要"><a href="#0x00-概要" class="headerlink" title="0x00 概要"></a>0x00 概要</h2><p>首先解释下在图像特效领域什么是波形变形：将图片像素对特定方向进行偏移的一种操作。这里偏移量一般是通过某个函数计算得到。比如下图就是以<strong>sin</strong>以及方向为45度角时进行波形变形的结果。</p>
-<center>
-<img src="/2021/05/06/WaveWarp/sin_wave.png" width="300" hegiht="150" align=center />
-<img src="/2021/05/06/WaveWarp/sin45_wave.png" width="300" hegiht="150" align=center />
-</center>
-
-<h2 id="0x01-原理"><a href="#0x01-原理" class="headerlink" title="0x01 原理"></a>0x01 原理</h2><p>首先考察图像在横向方向以sin(u)为波动函数的变形情况进行讨论，那么怎么生成以像素为单位且周期为p的sin波形函数呢？$\ Asin(\omega x \pm \theta)$(A表示波幅，$\omega$表示角频率，x表示x轴上的值 $\theta$为相偏移) 下图是就是$sin(x)、cos(x)$的图像。那么此时函数的周期$\frac{2\pi}{\omega} = 2\pi$(此处$\omega=1$) 波幅$A=1$,相偏移$\theta=0$。如果要想周期为100，只需要令$\omega=\frac{2\pi}{100}$。此处周期又可以称为波长。下文没有特殊说明使用波长来表示周期。 </p>
-<center>
-   <img src="/2021/05/06/WaveWarp/sincos.png" width="500" hegiht="200" align=center />
-</center> 
-
-<p>通过以上的简单介绍后，现在简单介绍如何使用shader(此处使用glsl着色语音)讲图像进行波幅为 20pixel，波长为40pixel，相偏移为0。此时波动函数:$20<em>sin(\frac{2\pi}{40}x+0)$。此处的x是像素点的像素坐标(像素点的p.uv.u </em> image width)。根据波动函数可以得到当前像素一个偏移值offset。怎么应用这个offset的值使得最终图像产生$sin(x)$函数效果呢？由于此处uv坐标的u是自变量，那么只要将v看成因变量就行。所以只需要将p.uv.v += offset / img_height;就可以得到受波动函数影响后的当前像素点的新uv坐标了。 glsl代码如下：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">varing vec2 uv;</span><br><span class="line">uniform vec2 _CanvasSize;</span><br><span class="line">unifomr sampler2D inputImageTexture;</span><br><span class="line">const float PI = 3.14259265</span><br><span class="line"></span><br><span class="line">float if_ge(float x, float y)&#123;return step(y, x);&#125;</span><br><span class="line">float if_lt(float x, float y)&#123;return 1.0 - if_ge(x, y);&#125;</span><br><span class="line">float if_le(float x, float y)&#123;return step(-y, -x);&#125;</span><br><span class="line">float if_gt(float x, float y)&#123;return 1.0 - if_le(x, y);&#125;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    float offset = 20.0 * sin(PI/20.0 * uv.u * _CanvasSize.x);</span><br><span class="line">    uv += vec2(0.0, 1.0) * offset / _CanvasSize;</span><br><span class="line">    vec4 col = texture2D(inputImageTexture, uv);</span><br><span class="line">    float if_out_range = if_gt( if_lt(uv.x, 0.0) +</span><br><span class="line">                                if_gt(uv.x, 1.0) +</span><br><span class="line">                                if_lt(uv.y, 0.0) +</span><br><span class="line">                                if_gt(uv.y, 1.0),</span><br><span class="line">                                    0.0);</span><br><span class="line">    col.rgb = mix(col.rgb, vec3(0.0, 0.0, 0.0), if_out_range);</span><br><span class="line">    gl_FragColor = col;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<center>
-   <img src="/2021/05/06/WaveWarp/sin_wave.png" width="500" hegiht="200" align=center />
-</center> 
-
-<p>那么如何产生沿着某个方向波动的特效呢？首先观察上述例子它的函数图像样子和下图类似。那么让波动方向沿着某个方向波动呢？比如下图右侧的图例。</p>
-<center>
-<img src="/2021/05/06/WaveWarp/sinx.png" width="300" hegiht="200" align=center />
-<img src="/2021/05/06/WaveWarp/slop_sin.png" width="300" hegiht="200" align=center /> 
-</center> 
-
-<p>仔细观察上面两个图可以发现它们有个规律。那就是可以将像素坐标在波动方向的上投影长度作为offset的自变量x即$x=\vec{dir}\cdot\vec{p}$。其示意图如下图所示：</p>
-<center>
-<img src="/2021/05/06/WaveWarp/sinx_demo.png" width="300" hegiht="200" align=center/>
-<img src="/2021/05/06/WaveWarp/slopsin_demo.png" width="300" hegiht="200" align=center/>
-</center> 
-
-<p>有了偏移量，只需要将$ \vec{r}= of * \vec{vdir }$（vdir表示垂直于$\vec{dir}$）。将$\vec{r}$归一化 + 像素uv坐标即可得到当前像素点手波动影响后的新uv坐标。即可得到下图的效果。</p>
-<center>
-<img src="/2021/05/06/WaveWarp/slopsin45.png" width="400" hegiht="200" align=center/>
-</center> 
-
-<p>改进后通用的波形变形shader代码如下：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">varing vec2 uv;</span><br><span class="line">uniform vec2 _CanvasSize;</span><br><span class="line">uniform float _DirAngle;</span><br><span class="line">unifomr sampler2D inputImageTexture;</span><br><span class="line">const float PI = 3.14259265</span><br><span class="line"></span><br><span class="line">float if_ge(float x, float y)&#123;return step(y, x);&#125;</span><br><span class="line">float if_lt(float x, float y)&#123;return 1.0 - if_ge(x, y);&#125;</span><br><span class="line">float if_le(float x, float y)&#123;return step(-y, -x);&#125;</span><br><span class="line">float if_gt(float x, float y)&#123;return 1.0 - if_le(x, y);&#125;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    float rad = radians(_DirAngle);</span><br><span class="line">    vec2 dir =vec2(cos(rad), sin(rad) );</span><br><span class="line">    float offset = 20.0 * sin(PI/20.0 * dot(uv*_CanvasSize, dir));</span><br><span class="line">    uv += vec2(-dir.x, dir.y) * offset / _CanvasSize;</span><br><span class="line">    vec4 col = texture2D(inputImageTexture, uv);</span><br><span class="line">    float if_out_range = if_gt( if_lt(uv.x, 0.0) +</span><br><span class="line">                                if_gt(uv.x, 1.0) +</span><br><span class="line">                                if_lt(uv.y, 0.0) +</span><br><span class="line">                                if_gt(uv.y, 1.0),</span><br><span class="line">                                    0.0);</span><br><span class="line">    col.rgb = mix(col.rgb, vec3(0.0, 0.0, 0.0), if_out_range);</span><br><span class="line">    gl_FragColor = col;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>明白了基本原理后，仅仅只需要将波形函数进行替换，就可以得到各种有趣其他波动函数的效果。下面就来介绍下AE中使用到的其他波动函数。</p>
-<hr>
-<h2 id="0x02-周期函数波形变形效果"><a href="#0x02-周期函数波形变形效果" class="headerlink" title="0x02 周期函数波形变形效果"></a>0x02 周期函数波形变形效果</h2><h3 id="方波"><a href="#方波" class="headerlink" title="方波"></a>方波</h3><p>方波的数学函数可以$y=Asign(sin(\omega x + \theta))$。其数学图像如下图所示。应用在图像波形变形效果如下图2所示：</p>
-<center>
-<img src="/2021/05/06/WaveWarp/square.png" width="400" hegiht="200" align=center/>
-<img src="/2021/05/06/WaveWarp/square_demo.png" width="400" hegiht="200" align=center/>
-</center> 
-
-<h3 id="三角波"><a href="#三角波" class="headerlink" title="三角波"></a>三角波</h3><p>三角波的数学表示为$y=\frac{2A}{p} \left|(x\;mod\;p - \frac{p}{2})\right| - \frac{2A}{4}$</p>
-<center>
-<img src="/2021/05/06/WaveWarp/triangle.png" width="400" hegiht="200" align=center/>
-<img src="/2021/05/06/WaveWarp/triangle_demo.png" width="400" hegiht="200" align=center/>
-</center> 
-
-<h3 id="锯齿波"><a href="#锯齿波" class="headerlink" title="锯齿波"></a>锯齿波</h3><p>锯齿波的数学表示为$y=2A(\frac{x}{p}-\lfloor \frac{x}{p} + \frac{1}{2}\rfloor)$</p>
-<center>
-<img src="/2021/05/06/WaveWarp/sawtooth.png" width="400" hegiht="200" align=center/>
-<img src="/2021/05/06/WaveWarp/sawtooth_demo.png" width="400" hegiht="200" align=center/>
-</center> 
-
-<h3 id="圆形波"><a href="#圆形波" class="headerlink" title="圆形波"></a>圆形波</h3><p>圆形波的数学表示为：$y=Asign(sin(\frac{\pi}{p}x))(\sqrt{0.5^2 - (\left| \frac{x}{p} - 0.5\right|)^2}）$</p>
-<center>
-<img src="/2021/05/06/WaveWarp/circle.png" width="400" hegiht="200" align=center/>
-<img src="/2021/05/06/WaveWarp/circle_demo.png" width="400" hegiht="200" align=center/>
-</center> 
-
-<h3 id="半圆波"><a href="#半圆波" class="headerlink" title="半圆波"></a>半圆波</h3><p>半圆形波的数学表示为：$y=A(\sqrt{0.5^2 - (\left| \frac{x}{p} - 0.5\right|)^2}）$</p>
-<center>
-<img src="/2021/05/06/WaveWarp/semicircle.png" width="400" hegiht="200" align=center/>
-<img src="/2021/05/06/WaveWarp/semicircle_demo.png" width="400" hegiht="200" align=center/>
-</center> 
-
-<h3 id="补圆波（uncircle）"><a href="#补圆波（uncircle）" class="headerlink" title="补圆波（uncircle）"></a>补圆波（uncircle）</h3><p>补圆形波的数学表示为：$y=Asign(sin(\frac{\pi}{p}x))(0.5 - \sqrt{0.5^2 - (\left| \frac{x}{p} - 0.5\right|)^2}）$</p>
-<center>
-<img src="/2021/05/06/WaveWarp/uncircle.png" width="400" hegiht="200" align=center/>
-<img src="/2021/05/06/WaveWarp/uncircle_demo.png" width="400" hegiht="200" align=center/>
-</center> 
-
-<h3 id="随机噪音波"><a href="#随机噪音波" class="headerlink" title="随机噪音波"></a>随机噪音波</h3><p>随机噪音只需要根据输入的$x$值得到一个随机值，对于相同的x得到的随机值是相同的。</p>
-<center>
-<img src="/2021/05/06/WaveWarp/noise_demo.png" width="400" hegiht="200" align=center/>
-</center> 
-
-<h3 id="平滑噪音波"><a href="#平滑噪音波" class="headerlink" title="平滑噪音波"></a>平滑噪音波</h3><p>平滑噪音思路：随机生成关键坐标值，利用牛顿插值公式求解出插值函数$f(x)$。（目前觉得可行的思路， 目前无法知道AE中采用的是什么算法。）</p>
+                <h1 id="xxglMakeCurrent深入剖析"><a href="#xxglMakeCurrent深入剖析" class="headerlink" title="xxglMakeCurrent深入剖析"></a>xxglMakeCurrent深入剖析</h1><h2 id="0x00-什么是glContext-？"><a href="#0x00-什么是glContext-？" class="headerlink" title="0x00 什么是glContext ？"></a>0x00 什么是glContext ？</h2><p>在调用glXX（比如glEnable, glActiveTexture）等命令的时候，很多时候相关的指令并没有立即发送到GPU端执行。而是相关指令和数据被保存了起来。只用当调用glDrawXX, glFlush, glFinish才会触发将当前glContext中缓存的的指令全部发送到GPU端执行。所以glContext是用保存GPU指令和资源句柄（glTexture、glShader、glProgram、glFrameBuffer、VBO、EBO、VAO、Uniform、InputLayout）的管理器。<br>结论：glContext是一种指令和资源的管理器。</p>
+<h2 id="0x01-glContext和-thread"><a href="#0x01-glContext和-thread" class="headerlink" title="0x01 glContext和 thread"></a>0x01 glContext和 thread</h2><p>OpenGL相关教程或者前辈们的建议中常常提及:在使用OpenGL API的时候需要保证当前glContext绑定线程和当前线程是一致的。那么<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%A7%91%E7%BA%B3%E6%96%AF%E7%BB%84%E7%BB%87">KhronosGroup</a> 这个标准制定者，为什么要这么设计API呢？也就是为什么要求在调用gl API函数时必须确保当前context绑定线程和当前线程是一致的。<br>以下只是个人推测几个原因：</p>
+<ol>
+<li>希望API足够简单易用。</li>
+<li>假如底层处理多线程互斥访问时，容易让性能下降。</li>
+<li>API设计之初，硬件能力相对一般。命令提交此时不是瓶颈。</li>
+</ol>
+<p>此处说是推测，因为要想实锤，还需要查找不少相关资料T.T跪。 所以接口制定者选择一个glContext同一时刻只能绑定一个线程。这样从而<strong>避免了很多GPU资源多线程同步问题</strong>，<strong>使得API使用者逻辑更加简洁不用花很多精力设计复杂易出错的多线程模型</strong>。</p>
+<h2 id="0x02-makeCurrent中间发生了什么？"><a href="#0x02-makeCurrent中间发生了什么？" class="headerlink" title="0x02 makeCurrent中间发生了什么？"></a>0x02 makeCurrent中间发生了什么？</h2><ol>
+<li>强制显卡驱动踢除所有Outstanding操作。</li>
+<li>API的调用是顺序的，由于任一时刻Context只能和一个线程进行绑定，所以makeCurrent调用时，需顺序提交所有的已经记录的命令。</li>
+</ol>
+<h2 id="0x03-SharedContext"><a href="#0x03-SharedContext" class="headerlink" title="0x03 SharedContext"></a>0x03 SharedContext</h2><p>为了尽可能的节省内存。SharedContext被提出来。它使得不同线程Context能够使用同一份资源。但记录的指令不共享。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>不要频繁调用glMakeCurrent()这种比较耗性能的函数。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.imaginationtech.com/blog/understanding-opengl-es-multi-thread-multi-window-rendering/">https://www.imaginationtech.com/blog/understanding-opengl-es-multi-thread-multi-window-rendering/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.khronos.org/opengl/wiki/Memory_Model">https://www.khronos.org/opengl/wiki/Memory_Model</a></li>
+</ol>
 
                 
             </div>
@@ -575,7 +516,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/05/06/WaveWarp/">http://example.com/2021/05/06/WaveWarp/</a>
+                    <a href="http://example.com/2021/05/13/MakeCurrentCost/">http://example.com/2021/05/13/MakeCurrentCost/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -613,12 +554,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%90%8E%E5%A4%84%E7%90%86%E7%89%B9%E6%95%88/">
-                                    <span class="chip bg-color">后处理特效</span>
+                                <a href="/tags/OpenGL/">
+                                    <span class="chip bg-color">OpenGL</span>
                                 </a>
                             
-                                <a href="/tags/AE/">
-                                    <span class="chip bg-color">AE</span>
+                                <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F/">
+                                    <span class="chip bg-color">图形图像</span>
                                 </a>
                             
                         </div>
@@ -790,9 +731,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/05/13/MakeCurrentCost/">
                     <div class="card-image">
@@ -810,9 +752,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -821,6 +763,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -840,7 +783,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2021/05/06/WaveWarp/">
@@ -870,7 +813,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
