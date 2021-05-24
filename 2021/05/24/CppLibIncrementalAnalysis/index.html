@@ -547,26 +547,11 @@
 <h2 id="0x02-结论"><a href="#0x02-结论" class="headerlink" title="0x02 结论"></a>0x02 结论</h2><p>有了对比数据之后，那么就比较容易找到解决方案了，主要关注一下几点：</p>
 <ol>
 <li>全局变量（字符串、非字符变量比如float型数组等）</li>
-<li>C++异常<br>开启异常后，编译器需要生成相应的异常捕获代码。下面的数据可以直观的编码异常对库大小的影响。<br><strong>关闭c++异常数据对比</strong> 编译参数 <strong>-fno-exceptions</strong></li>
-</ol>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>开启C++异常</th>
-<th>关闭C++异常</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>3.75M</td>
-<td>3.28M</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ol>
-<li>类中成员变量除了在构造函数中使用到，其他地方基本没用到，引入冗余的.o文件。</li>
+<li><p>C++异常<br>开启异常后，编译器需要生成相应的异常捕获代码。下面的数据可以直观的编码异常对库大小的影响。<br> <strong>关闭c++异常数据对比</strong> 编译参数 <strong>-fno-exceptions</strong></p>
+<p> |  开启C++异常 | 关闭C++异常 |<br> |  ——  | ——  |<br> | 3.75M  | 3.28M |</p>
+</li>
+<li><p>类中成员变量除了在构造函数中使用到，其他地方基本没用到，引入冗余的.o文件。</p>
+</li>
 <li>bitcode（这个影响生成的库文件大小）</li>
 </ol>
 <h2 id="0x03-参考文献"><a href="#0x03-参考文献" class="headerlink" title="0x03 参考文献"></a>0x03 参考文献</h2><ol>
