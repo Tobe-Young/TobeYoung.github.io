@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="C++库大小增量分析, TobeYoung">
+    <meta name="keywords" content="投资理财-可转债, TobeYoung">
     <meta name="description" content="Stay hungry, stay foolish.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>C++库大小增量分析 | TobeYoung</title>
+    <title>投资理财-可转债 | TobeYoung</title>
     <link rel="icon" type="image/jpeg" href="/medias/logo.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">C++库大小增量分析</h1>
+                    <h1 class="description center-align post-title">投资理财-可转债</h1>
                 </div>
             </div>
         </div>
@@ -431,12 +431,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/cpp/">
-                                <span class="chip bg-color">cpp</span>
+                            <a href="/tags/%E7%90%86%E8%B4%A2/">
+                                <span class="chip bg-color">理财</span>
                             </a>
                         
-                            <a href="/tags/iOS/">
-                                <span class="chip bg-color">iOS</span>
+                            <a href="/tags/%E5%8F%AF%E8%BD%AC%E5%80%BA/">
+                                <span class="chip bg-color">可转债</span>
                             </a>
                         
                     </div>
@@ -447,8 +447,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" class="post-category">
-                                软件开发
+                            <a href="/categories/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2/" class="post-category">
+                                投资理财
                             </a>
                         
                     </div>
@@ -460,7 +460,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-24
+                    2021-06-06
                 </div>
                 
 
@@ -481,87 +481,34 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="C-库大小增量对比分析"><a href="#C-库大小增量对比分析" class="headerlink" title="C++库大小增量对比分析"></a>C++库大小增量对比分析</h1><h2 id="0x00-背景"><a href="#0x00-背景" class="headerlink" title="0x00 背景"></a>0x00 背景</h2><p>工作中，有一次开发完成相应功能后准备稍微放松下时iOS客户端童鞋跑过来说，主工程包大小已经超了，其中我们团队负责的库大小增量排序靠前，增加了大概1.5M左右。前端童鞋要求尽可能把包体增量减少，这个要求让我当时有点慌，因为完全不知道哪些因素主要导致包体增加。更别提解决这个问题。</p>
-<h2 id="0x01-分析"><a href="#0x01-分析" class="headerlink" title="0x01 分析"></a>0x01 分析</h2><p>那么怎么分析出新增的大小是什么原因导致的呢？在给出这个问题答案之前，首先需要大家科普下相关C++知识点。</p>
-<h3 id="C-编译流程"><a href="#C-编译流程" class="headerlink" title="C++编译流程"></a>C++编译流程</h3><ol>
-<li>—&gt;预处理 </li>
-<li>—&gt;词法分析 </li>
-<li>—&gt;语法分析</li>
-<li>—&gt;生成语法树</li>
-<li>—&gt;语义分析</li>
-<li>—&gt;制导翻译</li>
-<li>—&gt;中间代码生成</li>
-<li>—&gt;优化</li>
-<li>—&gt;目标代码生成（即.o文件生成）</li>
-</ol>
-<p>使用 <strong>objdump xx</strong> 即可查看.o文件的结构。</p>
-<center>
-<img src="/2021/05/24/CppLibIncrementalAnalysis/result_2.png" width="400" hegiht="150" />
+                <h1 id="投资理财-可转债"><a href="#投资理财-可转债" class="headerlink" title="投资理财-可转债"></a>投资理财-可转债</h1><h2 id="目前投资理财的分类"><a href="#目前投资理财的分类" class="headerlink" title="目前投资理财的分类"></a>目前投资理财的分类</h2><center>
+<img src="/2021/06/06/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2-%E5%8F%AF%E8%BD%AC%E5%80%BA/classes.png" width="500" hegiht="150" />
 </center>
 
-<p>一个目标文件结构大致如下图所示：</p>
-<center>
-<img src="/2021/05/24/CppLibIncrementalAnalysis/result_1.png" width="400" hegiht="150" />
+<p>此处只是从不同角度对当前投资理财进行种类划分，那么肯定有某种投资种类夸多个分类。比如此处要讲的 <strong>可转债</strong></p>
+<h2 id="什么是可转债"><a href="#什么是可转债" class="headerlink" title="什么是可转债"></a>什么是可转债</h2><p>可转债，全称为：“可转换公司债券”，是可以转换成公司股票的<strong>债券</strong>。<br>从上面的解释可以看出可转债具有<strong>债权</strong> 和 <strong>期权</strong> 的双重属性</p>
+<p><strong>债权属性</strong></p>
+<p> 举个例子，码农A借了1w给了他的朋友B且B写了一张借条给A并签名和按下手印，此时A和B产生债务关系。A称为<strong>债权人</strong> B称为<strong>债务人</strong>，借条相当于一张<strong>债务凭证</strong> 其实也就是我们常说的<strong>债券</strong>。</p>
+<p>从<strong>可转债</strong>债权角度看，它是一张债券，所以只要<strong>上市公司</strong>（目前A股只有上市公司发行可转债） 不倒闭，债权人就可以到期<strong>行使债权</strong>，换句话说，上市公司到期必须<strong>还本付息</strong>，目前市场上其利率大概在 <strong>1%-2%</strong>。</p>
+<p>只谈收益不谈风险的都是扯淡。<br><strong>风险</strong>：上市公司倒闭，公司偿还优先债券后，已经没有足够资金偿还可转债。<br><strong>收益</strong> 年化1% - 2%的年化收益率。投资1w￥一年大概100-200￥。</p>
+<p><strong>期权属性</strong></p>
+<p>期权的产生是源自的“荷兰郁金香”开始。 这里简单介绍发生在17世纪30年代的荷兰。那时候郁金香的一些品种堪称欧洲最昂贵的稀世花卉。1635年，很多珍贵品种的郁金香球茎供不应求，加上炒作投机，使得郁金香球茎加个飞涨20倍，成为最早记录的经济泡沫。同时，这股投机狂潮也开启了期权交易的大门。郁金香中间商向<strong>种植者(商品所有者)</strong>收取一笔30000荷兰盾的费用，假设此时种植者预估拥有10000朵的产量，当前价格是100荷兰盾。授予种植者按照约定最低价格30荷兰盾向该中间商出售郁金香球的权利，对于种植者而言，持有的一张看跌期权，当到收获郁金香球的时候，如果市场价格10荷兰盾，种植者也完全可以以30荷兰盾价格卖给中间商。这种交易对于降低郁金香交易商和种植者的风险十分有用，这样早期的期权<br>就产生了。</p>
+<p><strong>期权</strong>也叫选择权，是买方通过支付卖方一定期权费用从而获得一定时间内的一定的协议执行价格买或出售的权利，而卖方则必须向买方履行出售或者购买的义务。某天之后期权失效，这一天称为到期日或者成熟日。<br><strong>期权买方</strong> 买进期权合约的一方。买进期权未平仓者称为期权买方。在期权交易中，期权买方支付一笔较小费用（期权金）之后，获得期权合约所赋予的合约规定的特定时间内，按照事先确定的执行价格向期权卖方买进或者卖出一定数量相关标的资产。<br>的权利。<strong>期权买方只有权利，没有义务</strong>。比如上述球茎种植者在收获的时候，可以选择卖给中间商，也可以不卖。他有选择的权利。<br><strong>期权卖方</strong> 卖出期权合约的一方。<strong>期权卖方只有义务，没有权利</strong>。上述例子的中间商则是卖方，如果到收获时候，种植者行使期权，将球茎卖给他，中间商则比如按照约定的最低价格收购郁金香球茎。</p>
+<p><strong>可转债</strong>持有者，可以在<strong>转股期</strong>选择将手中的可转债券转按照<strong>转债张数乘100/转股价=股数</strong>进行转换，转股价在可转债发行就确定了，发行公司有对转股加向下调整的权利 。这也是为什么<strong>可转债</strong>拥有<strong>期权属性</strong>。</p>
+<p><strong>风险</strong>：转换成股票后，债券完全退化成股票，存在下跌风险。<br><strong>收益</strong>: 发行公司进行这种融资大部分动机是不想用真金还债。可能下调转股价，诱使大家进行转股。下调转股价,转债市价会上升对投资者有利。</p>
+<h2 id="如何利用可转债给生活加鸡腿？"><a href="#如何利用可转债给生活加鸡腿？" class="headerlink" title="如何利用可转债给生活加鸡腿？"></a>如何利用可转债给生活加鸡腿？</h2><ol>
+<li><strong>打新</strong><br>每隔一段时间都新可转债发行，直接参与打新即可。<center>
+<img src="/2021/06/06/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2-%E5%8F%AF%E8%BD%AC%E5%80%BA/IPO_0.jpeg" width="256" hegiht="150" />
+<img src="/2021/06/06/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2-%E5%8F%AF%E8%BD%AC%E5%80%BA/IPO_1.jpeg" width="256" hegiht="150" />
+</center></li>
+<li><strong>直接参与已经上市的可转债交易</strong><center>
+<img src="/2021/06/06/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2-%E5%8F%AF%E8%BD%AC%E5%80%BA/IPO_2.jpeg" width="256" hegiht="150" />
 </center>
 
-<h3 id="链接器链接过程"><a href="#链接器链接过程" class="headerlink" title="链接器链接过程"></a>链接器链接过程</h3><ol>
-<li><strong>为什么需要链接器？</strong></li>
-</ol>
-<p>“很久很久以前，在一个遥远的银河系……人们编写程序时，将所有的源代码都卸载同一个而文件中，发展到后来一个程序源码的文件长达数百万行，以至于这个地方的人类没有能力维护这个程序了。人们开始需求新的办法，一场新的软件开发革命即将爆发……<br>这也是现代软件开发过程，且软件规模往往很大，往往都是百万行代码。如上面开玩笑那样，都放在一个模块中肯定是无法想象。所以现代的大型软件往往拥有成千上万行个模块。这些模块之间相互依赖又相互独立。这种按照层级化以及模块化的存储和组织源代码有很多好处，比如代码更容易阅读、理解、重用，每个模块可以单独开发、编译、测试。改变部分代码甚至不需要重新编译整个程序。<br>但是在一个程序被分割成多个模块后，这些模块直接最后又是如何组织成一个单一的程序的呢？其实模块之间如何组合问题可以归结为模块直接如何通讯的问题。最常见的属于静态语言的C/C++模块之间的函数调用以及模块之间的变量访问。函数访问需要知道函数的地址，变量的访问也必须知道目标地址。模块之间的通讯类似于拼图，定义符号的模块多处一块区域，引用该符号的模块刚好少一块区域，两者一拼接刚好完美组合，如下图所示。这个模块刚好的拼接过程就是上述问题的答案：链接” 引用自参考文献[1] p41。</p>
-<center>
-<img src="/2021/05/24/CppLibIncrementalAnalysis/result_3.png" width="300" hegiht="150" />
-</center>
-
-<ol>
-<li><strong>链接器在链接的时候干了什么？</strong></li>
-</ol>
-<p>链接器在链接的时候主要操作包括：</p>
-<ul>
-<li>地址和空间分配（Address and Storage Allocation）</li>
-<li>符号决议 （Symbol Resolution）<br>  符号决议有时候也叫符号绑定（Symbol Binding）、名称绑定（Name Binding）、名称决议（Name Resolution）甚至还有叫地址绑定的（Address Binding）、指令绑定（Instruction Binding）。大体上它们意思一样。但是从细节上还有有些区别，比如“决议”更倾向于静态链接，而“绑定”更倾向于动态链接。所以在静态链接中我们统一称为“符号决议”。</li>
-<li>重定位 （Relocation）<br>  给编译后的“绝对地址”添加一定的偏移（打补丁）的过程称为重定位。<br>想要深入了解链接过程和细节可以参考阅读引用文献[1]</li>
-</ul>
-<h3 id="C-库"><a href="#C-库" class="headerlink" title="C++库"></a>C++库</h3><p> <strong>静态库</strong><br>重定位目标文件以一种特定的方式打包成一个单独的文件，并且在链接生成可执行文件时，从这个单独的文件中“拷贝”它自己需要的内容到最终的可执行文件中。这个单独的文件，称为静态库。linux中通常以.a(archive)为后缀</p>
-<center>
-<img src="/2021/05/24/CppLibIncrementalAnalysis/result_4.png" width="200" hegiht="150" />
-</center>
-
-<p> <strong>动态库</strong></p>
-<p>动态库和静态库类似，但是它并不在链接时将需要的二进制代码都“拷贝”到可执行文件中，而是仅仅“拷贝”一些重定位和符号表信息，这些信息可以在程序运行时完成真正的链接过程。linux中通常以.so（shared object）作为后缀。</p>
-<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p><strong>分析工具</strong> （LinkMapList）、LinkMapParser脚本、Lua</p>
-<p>LinkMapList可以在<strong>Xcode</strong>设置下图所示，</p>
-<center>
-<img src="/2021/05/24/CppLibIncrementalAnalysis/result_5.png" width="600" hegiht="150" />
-</center>
-从而得到 {appName}-LinkMap-normal-{arch}.txt文件。这个文件描述了，最终生成的可执行文件链接哪些.o文件。使用了哪些符号。利用这些信息即可完成这次遇到的问题。
-
-调用
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node linkmapParser.js &quot;path to &#123;appName&#125;-LinkMap-normal-&#123;arch&#125;.txt&quot; -hl </span><br></pre></td></tr></table></figure>
-得到类似下图结果:
-
-<center>
-<img src="/2021/05/24/CppLibIncrementalAnalysis/result_0.png" width="600" hegiht="350" />
-</center>
-
-<p>然后用<strong>shell grep -i “{grep}” file_path</strong>过滤出当前库中的.o文件。</p>
-<p>有这些数据还远远不够，还得稍微编写一个进一步分析的脚本。因为本人比较熟悉lua，固使用lua语言编写的一个脚本分析工具。代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">local path0 = &quot;path to &#123;appName&#125;-LinkMap-normal-&#123;arch&#125;_0.txt&quot;;</span><br><span class="line">local path1 = &quot;path to &#123;appName&#125;-LinkMap-normal-&#123;arch&#125;_1.txt&quot;;</span><br><span class="line"></span><br><span class="line">-- local file = io.open(path, &quot;r&quot;)</span><br><span class="line"></span><br><span class="line">local _691List = &#123;&#125;</span><br><span class="line">local _691DList = &#123;&#125; -- k: .o file name, value : list index</span><br><span class="line">local _692List = &#123;&#125;</span><br><span class="line">local _692DList = &#123;&#125; -- k: .o file name, value : list index</span><br><span class="line"></span><br><span class="line">for line in io.lines(path0) do</span><br><span class="line">    table.insert(_691List, line)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">for line in io.lines(path1) do</span><br><span class="line">    table.insert(_692List, line)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">local GetObjectName = function(name, regx)</span><br><span class="line">    for s in string.gmatch(name, regx) do</span><br><span class="line">        return s</span><br><span class="line">    end</span><br><span class="line">    return &quot;&quot;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">--Filte object .o names</span><br><span class="line">for k, v in ipairs(_691List) do</span><br><span class="line">    local objName = GetObjectName(v, &quot;libA%-ios%.a%((.*)%-%w*%.o%)&quot;)</span><br><span class="line">    if (objName ~= &quot;&quot;) then</span><br><span class="line">        _691DList[objName] = k</span><br><span class="line">    else</span><br><span class="line">        objName = GetObjectName(v, &quot;libA%-ios%.a%((.*)%.o%)&quot;)</span><br><span class="line">        if (objName ~= &quot;&quot;) then</span><br><span class="line">            _691DList[objName] = k</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end </span><br><span class="line"></span><br><span class="line">for k, v in ipairs(_692List) do</span><br><span class="line">    local objName = GetObjectName(v, &quot;libA%-ios%.a%((.*)%.o%)&quot;)</span><br><span class="line">    if not ( objName == &quot;&quot;) then</span><br><span class="line">        _692DList[objName] = k</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">--Diff</span><br><span class="line">local diffList = &#123;&#125;</span><br><span class="line">for k, v in pairs(_692DList) do</span><br><span class="line">    local _691Index = _691DList[k]</span><br><span class="line">    if _691Index ~= nil then</span><br><span class="line">        print(string.format(&quot;%-32s | %-32s&quot;, _691List[_691Index], _692List[v]))</span><br><span class="line">    else</span><br><span class="line">        table.insert(diffList, _692List[v])</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">for k, v in ipairs(diffList) do</span><br><span class="line">    print(v)</span><br><span class="line">end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>运行上述代码，即可得到同一个.o文件的增量，新增了那个目标文件。</p>
-<h2 id="0x02-结论"><a href="#0x02-结论" class="headerlink" title="0x02 结论"></a>0x02 结论</h2><p>有了对比数据之后，那么就比较容易找到解决方案了，主要关注一下几点：</p>
-<ol>
-<li>全局变量（字符串、非字符变量比如float型数组等）</li>
-<li><p>C++异常<br>开启异常后，编译器需要生成相应的异常捕获代码。下面的数据可以直观的编码异常对库大小的影响。<br> <strong>关闭c++异常数据对比</strong> 编译参数 <strong>-fno-exceptions</strong></p>
-<p> |  开启C++异常 | 关闭C++异常 |<br> |  ——  | ——  |<br> | 3.75M  | 3.28M |</p>
 </li>
-<li><p>类中成员变量除了在构造函数中使用到，其他地方基本没用到，引入冗余的.o文件。</p>
-</li>
-<li>bitcode（这个影响生成的库文件大小）</li>
 </ol>
-<h2 id="0x03-参考文献"><a href="#0x03-参考文献" class="headerlink" title="0x03 参考文献"></a>0x03 参考文献</h2><ol>
-<li>《程序员的自我修养—链接、装载与库》</li>
-<li><a target="_blank" rel="noopener" href="https://gist.github.com/bang590/8f3e9704f1c2661836cd">https://gist.github.com/bang590/8f3e9704f1c2661836cd</a> </li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/71372182">https://zhuanlan.zhihu.com/p/71372182</a></li>
-</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>直接参入可转债交易</strong>：<br>    要求一定金融知识花时间进行利用数据进行分析, 上班族需要合理安排操作时间且具备较好的风险意识和控制能力。</p>
+<p><strong>打新可转债</strong><br>    基本不需要很多金融知识<br>    不需要花时间进行分析（打新和上市卖出总时间大概4-5分钟）<br>    适合风险偏好中低水平且具有一定闲钱投资者</p>
 
                 
             </div>
@@ -588,7 +535,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://tobeyoung.xyz/2021/05/24/CppLibIncrementalAnalysis/">http://tobeyoung.xyz/2021/05/24/CppLibIncrementalAnalysis/</a>
+                    <a href="http://tobeyoung.xyz/2021/06/06/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2-%E5%8F%AF%E8%BD%AC%E5%80%BA/">http://tobeyoung.xyz/2021/06/06/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2-%E5%8F%AF%E8%BD%AC%E5%80%BA/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -626,12 +573,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/cpp/">
-                                    <span class="chip bg-color">cpp</span>
+                                <a href="/tags/%E7%90%86%E8%B4%A2/">
+                                    <span class="chip bg-color">理财</span>
                                 </a>
                             
-                                <a href="/tags/iOS/">
-                                    <span class="chip bg-color">iOS</span>
+                                <a href="/tags/%E5%8F%AF%E8%BD%AC%E5%80%BA/">
+                                    <span class="chip bg-color">可转债</span>
                                 </a>
                             
                         </div>
@@ -803,9 +750,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/06/06/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2-%E5%8F%AF%E8%BD%AC%E5%80%BA/">
                     <div class="card-image">
@@ -823,9 +771,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -838,6 +786,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -860,29 +809,33 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/13/MakeCurrentCost/">
+                <a href="/2021/05/24/CppLibIncrementalAnalysis/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="MakeCurrent发生了什么？">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="C++库大小增量分析">
                         
-                        <span class="card-title">MakeCurrent发生了什么？</span>
+                        <span class="card-title">C++库大小增量分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MakeCurrent初步剖析
+                            C++链接到主App的大小增量对比分析
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-24
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            TobeYoung
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" class="post-category">
+                                    软件开发
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -890,12 +843,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/OpenGL/">
-                        <span class="chip bg-color">OpenGL</span>
+                    <a href="/tags/cpp/">
+                        <span class="chip bg-color">cpp</span>
                     </a>
                     
-                    <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%9B%BE%E5%83%8F/">
-                        <span class="chip bg-color">图形图像</span>
+                    <a href="/tags/iOS/">
+                        <span class="chip bg-color">iOS</span>
                     </a>
                     
                 </div>
@@ -1026,6 +979,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
