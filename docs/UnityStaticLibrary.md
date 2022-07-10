@@ -30,12 +30,17 @@ graph LR;
 以上是工程依赖关系图
 
 目前Unity在Apple平台导出的xcodeproj默认设置成构建**动态库**。那就下来分析正常情况下这种依赖关系会存在什么问题？
+
+---
+#### 情形1：
 1. 第三方库是 **静态库**
 2. UnityFramework是 **动态库**
 
 ![静态库依赖动态库](images/shared_static.png)
 #### 存在的问题
 * 出现符号_BZFooV重复的警告 Duplicate symbols，大概率运行时出现crash
+-----
+#### 情形2：
 
 1. 第三方库是 **动态库**
 2. UnityFramework是 **静态库**
@@ -57,8 +62,10 @@ graph LR;
 
 可是很遗憾此时，提示如下错误：
 ![静态库依赖动态库](images/NoSwiftSymbol.png)
+
 从网上搜索相关的关键词即可，解决方案就是在Unity-iPhone目标 BuildPhase中的CompileSource添加一个空.swift 文件即可。或者直接复用Unity自动生成的**Dummy.swift**文件。
 
+----
 2. 解决链接错误后，编译成功，可以运行时出现如下错误：
 "xxx unrecognized selector sent to instance 0x100...."这是由于UnityView+iOS.mm和UnityViewControllerBase+iOS.mm 在编译到UnityFramework静态库后，在可执行程序编译链接的过程中，因为**没有引用其引用的地方导致其代码块是一个孤岛** 从而编译器将其优化掉了。所以在Unity-iPhone的build phase中添加这两个源文件即可。
 
