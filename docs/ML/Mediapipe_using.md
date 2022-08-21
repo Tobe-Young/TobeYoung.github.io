@@ -8,4 +8,5 @@
 https://github.com/google/mediapipe/issues/2701
 
 ## 引用
-[Mediapipe新手入门教程](https://medium.com/deelvin-machine-learning/how-to-build-mediapipe-on-ios-f5e4cabf47f5)
+1. [Mediapipe新手入门教程](https://medium.com/deelvin-machine-learning/how-to-build-mediapipe-on-ios-f5e4cabf47f5)
+2. [Mediapipe handtracking 使用示例代码](https://blog.csdn.net/haiyangyunbao813/article/details/122464972)
